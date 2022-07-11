@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -60,9 +61,10 @@ namespace SAG_PartsReturn
             path = ExcelPath.Text;
 
 
+
+
             Technicians tech = new Technicians();
             List<string> techInfo = tech.Info(TechnicianSelect.Text.ToString());
-
             IWebDriver driver = new ChromeDriver();
             ////////////////////////Open Page////////////////////////////////
             driver.Navigate().GoToUrl("https://partners.gorenje.com/sagCC/vracilo_vnos.aspx");
