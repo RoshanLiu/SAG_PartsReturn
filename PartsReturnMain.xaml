@@ -55,10 +55,11 @@
                    VerticalAlignment="Top"/>
         <Button Name="Setting" 
                 Content="Setting" 
+                
                 HorizontalAlignment="Left" 
-                Margin="36,431,0,0" 
+                Margin="40,418,0,0" 
                 VerticalAlignment="Top" 
-                Width="68" Click="onSettingClicked"/>
+                Width="52" Click="onSettingClicked"/>
         <Button Name="btnRun" 
                 Content="Run"
                 HorizontalAlignment="Center" 
@@ -76,7 +77,16 @@
                    Height="56" Width="250"/>
         <TextBlock x:Name="User" 
                    HorizontalAlignment="Left" 
-                   Margin="187,431,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+                   Margin="113,418,0,0" 
+                   TextWrapping="Wrap" 
+                   
+                   VerticalAlignment="Top" Width="162" Height="53">
+            <TextBlock.Text>
+                <PriorityBinding>
+                    <Binding Path="Properties.Settings.Default.USERNAME" IsAsync="True"/>
+                </PriorityBinding>
+            </TextBlock.Text>
+        </TextBlock>
 
     </Grid>
 </Window>

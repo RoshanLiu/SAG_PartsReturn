@@ -1,23 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using Microsoft.Office.Interop.Excel;
+﻿using Microsoft.Office.Interop.Excel;
 using Microsoft.Win32;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
+using System;
+using System.Collections.Generic;
+using System.Windows;
+using System.Windows.Controls;
 using Excel = Microsoft.Office.Interop.Excel;
 
 namespace SAG_PartsReturn
@@ -32,7 +21,7 @@ namespace SAG_PartsReturn
             InitializeComponent();
             btnOpenFile.IsEnabled = false;
             btnRun.IsEnabled = false;
-            getUsername();
+            //User.Text = "Logged in as: " + getUsername();
         }
         private void btnOpenFile_Click(object sender, RoutedEventArgs e)
         {
@@ -68,12 +57,23 @@ namespace SAG_PartsReturn
             IWebDriver driver = new ChromeDriver();
             ////////////////////////Open Page////////////////////////////////
             driver.Navigate().GoToUrl("https://partners.gorenje.com/sagCC/vracilo_vnos.aspx");
-            driver.FindElement(By.Id("usr")).SendKeys("liuro_sh");
-            driver.FindElement(By.Id("pwd")).SendKeys("gorenje1");
+            driver.FindElement(By.Id("usr")).SendKeys(Properties.Settings.Default.USERNAME);
+            driver.FindElement(By.Id("pwd")).SendKeys(Properties.Settings.Default.PASSWORD);
+
             driver.FindElement(By.Id("btnPrijava")).Click();
+
             driver.Navigate().GoToUrl("https://partners.gorenje.com/sagCC/vracilo_vnos.aspx");
             //select State
-            driver.FindElement(By.Id("ctl00_ContentPlaceHolder1_drpCenter")).Click();
+            try
+            {
+                driver.FindElement(By.Id("ctl00_ContentPlaceHolder1_drpCenter")).Click();
+            }
+            catch (OpenQA.Selenium.NoSuchElementException)
+            {
+                driver.Close();
+                User.Text = "Username or password incorrect";
+                return;
+            }
             {
                 var dropdown = driver.FindElement(By.Id("ctl00_ContentPlaceHolder1_drpCenter"));
                 dropdown.FindElement(By.XPath($"//option[. = '{techInfo[0]}']")).Click();
@@ -131,9 +131,9 @@ namespace SAG_PartsReturn
         {
             btnOpenFile.IsEnabled = true;
         }
-        public void getUsername()
+        public string getUsername()
         {
-            User.Text = Properties.Settings.Default.USERNAME;
+            return Properties.Settings.Default.USERNAME.ToString();
         }
         private void onSettingClicked(object sender, RoutedEventArgs e)
         {
@@ -141,5 +141,12 @@ namespace SAG_PartsReturn
             partsReturnConfig.Owner = this;
             partsReturnConfig.Show();
         }
+
+
+
+
+
+
+
     }
 }
