@@ -36,22 +36,12 @@ public class Technicians
                 result[1] = "DAVID LEIGH";
                 result[2] = "LEIGH DAVID";
                 break;
-            case "D13":
-                result[0] = nsw;
-                result[1] = "TECHNICIAN NSW";
-                result[2] = "SANTILLO JOE";
-                break;
-            case "D18":
-                result[0] = nsw;
-                result[1] = "RITHLESH NARAYAN";
-                result[2] = "NARAYAN RITHLESH";
-                break;
             case "D19":
                 result[0] = nsw;
                 result[1] = "ROBERT WICKHAM";
                 result[2] = "WICKHAM ROBERT";
                 break;
-            case "D21":
+            case "WNSW":
                 result[0] = nsw;
                 result[1] = "BIEN SALVADOR";
                 result[2] = "SALVADOR BIEN";
@@ -67,6 +57,7 @@ public class Technicians
                 result[1] = "KAM MANI";
                 result[2] = "null";
                 break;
+
 
         }
         return result;

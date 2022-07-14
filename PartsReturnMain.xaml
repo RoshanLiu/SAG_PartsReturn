@@ -15,13 +15,14 @@
             <ComboBoxItem Content="D6"></ComboBoxItem>
             <ComboBoxItem Content="D2"></ComboBoxItem>
             <ComboBoxItem Content="D19"></ComboBoxItem>
-            <ComboBoxItem Content="D21"></ComboBoxItem>
-            <ComboBoxItem Content="D13"></ComboBoxItem>
-            <ComboBoxItem Content="D18"></ComboBoxItem>
+           
+      
+          
             <ComboBoxItem Content="A4"></ComboBoxItem>
             <ComboBoxItem Content="A7"></ComboBoxItem>
             <ComboBoxItem Content="A8"></ComboBoxItem>
             <ComboBoxItem Content="F18"></ComboBoxItem>
+            <ComboBoxItem Content="WNSW"></ComboBoxItem>
         </ComboBox>
         <Button Name="btnOpenFile" 
                 HorizontalAlignment="Center" 
@@ -79,14 +80,8 @@
                    HorizontalAlignment="Left" 
                    Margin="113,418,0,0" 
                    TextWrapping="Wrap" 
-                   
-                   VerticalAlignment="Top" Width="162" Height="53">
-            <TextBlock.Text>
-                <PriorityBinding>
-                    <Binding Path="Properties.Settings.Default.USERNAME" IsAsync="True"/>
-                </PriorityBinding>
-            </TextBlock.Text>
-        </TextBlock>
+                   VerticalAlignment="Top" Width="162" Height="53"/>
+
 
     </Grid>
 </Window>
